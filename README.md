@@ -4,7 +4,7 @@ A simple, keyboard-accessible calculator built with Vue 3 and TypeScript. Suppor
 
 https://farzanuddin.github.io/calc/
 
-<video src="https://raw.githubusercontent.com/farzanuddin/calc/main/.github/assets/screen-recording.mov" controls width="360"></video>
+![Demo](https://raw.githubusercontent.com/farzanuddin/calc/main/.github/assets/screen-recording.gif)
 
 ## Objective
 
