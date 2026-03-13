@@ -13,13 +13,8 @@ const appBackground = {
 
 const toggleSurface = {
   light:
-    'border-black/15 bg-[var(--color-key-function-light)] text-[var(--color-key-function-text-light)] shadow-[var(--shadow-key-function-light)]',
+    'border-black/15 bg-[var(--color-key-neutral-light)] text-[var(--color-key-neutral-text-light)] shadow-[var(--shadow-key-neutral-light)]',
   dark: 'border-[var(--color-toggle-border-dark)] bg-[var(--color-toggle-surface-dark)] text-[var(--color-toggle-text-dark)]',
-} as const;
-
-const calculatorShell = {
-  light: 'bg-[var(--color-calculator-shell-light)]',
-  dark: 'bg-[var(--color-calculator-shell-dark)]',
 } as const;
 
 const calculatorBody = {
@@ -42,7 +37,7 @@ const buttonSurface = {
     neutral:
       'bg-[var(--color-key-neutral-light)] text-[var(--color-key-neutral-text-light)]',
     function:
-      'bg-[var(--color-key-function-light)] text-[var(--color-key-function-text-light)]',
+      'bg-[var(--color-key-neutral-light)] text-[var(--color-key-neutral-text-light)]',
     operator:
       'bg-[var(--color-key-operator-light)] text-[var(--color-key-operator-text-light)]',
     equals:
@@ -52,7 +47,7 @@ const buttonSurface = {
     neutral:
       'bg-[var(--color-key-neutral-dark)] text-[var(--color-key-neutral-text-dark)]',
     function:
-      'bg-[var(--color-key-function-dark)] text-[var(--color-key-function-text-dark)]',
+      'bg-[var(--color-key-neutral-dark)] text-[var(--color-key-neutral-text-dark)]',
     operator:
       'bg-[var(--color-key-operator-dark)] text-[var(--color-key-operator-text-dark)]',
     equals:
@@ -63,13 +58,13 @@ const buttonSurface = {
 const buttonShadow = {
   light: {
     neutral: 'shadow-[var(--shadow-key-neutral-light)]',
-    function: 'shadow-[var(--shadow-key-function-light)]',
+    function: 'shadow-[var(--shadow-key-neutral-light)]',
     operator: 'shadow-[var(--shadow-key-operator-light)]',
     equals: 'shadow-[var(--shadow-key-operator-light)]',
   },
   dark: {
     neutral: 'shadow-[var(--shadow-key-neutral-dark)]',
-    function: 'shadow-[var(--shadow-key-function-dark)]',
+    function: 'shadow-[var(--shadow-key-neutral-dark)]',
     operator: 'shadow-[var(--shadow-key-operator-dark)]',
     equals: 'shadow-[var(--shadow-key-operator-dark)]',
   },
@@ -79,7 +74,7 @@ export const themeClasses: Record<ThemeName, ThemeClasses> = {
   light: {
     app: appBackground.light,
     toggle: toggleSurface.light,
-    shell: calculatorShell.light,
+    shell: '',
     body: calculatorBody.light,
     displayFrame: `${displayFrame.light} ${displayFrameShadow.light}`,
     buttonVariants: {
@@ -92,7 +87,7 @@ export const themeClasses: Record<ThemeName, ThemeClasses> = {
   dark: {
     app: appBackground.dark,
     toggle: toggleSurface.dark,
-    shell: calculatorShell.dark,
+    shell: '',
     body: calculatorBody.dark,
     displayFrame: `${displayFrame.dark} ${displayFrameShadow.dark}`,
     buttonVariants: {
