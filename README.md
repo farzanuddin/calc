@@ -2,7 +2,9 @@
 
 A simple, keyboard-accessible calculator built with Vue 3 and TypeScript. Supports simple arithmetic operations, a light and dark theme and responsive mobile layout.
 
-<video src="./.github/assets/screen-recording.mov" controls width="360"></video>
+https://farzanuddin.github.io/calc/
+
+<video src="https://raw.githubusercontent.com/farzanuddin/calc/main/.github/assets/screen-recording.mov" controls width="360"></video>
 
 ## Objective
 
