@@ -2,6 +2,8 @@
 
 A simple, keyboard-accessible calculator built with Vue 3 and TypeScript. Supports simple arithmetic operations, a light and dark theme and responsive mobile layout.
 
+<video src="./.github/assets/screen-recording.mov" controls width="360"></video>
+
 ## Objective
 
 This project was built as a hands-on exploration of two things: getting back up to speed with Vue after not having used it for a while, and evaluating the newly released Vite 8 — specifically how [Rolldown](https://rolldown.rs/) works as its bundler under the hood. Rolldown replaces the previous Rollup-based pipeline with a Rust-native bundler, and a small but real project felt like the right way to observe its build performance and output characteristics in practice.
@@ -55,24 +57,3 @@ Build for production:
 pnpm build
 pnpm preview
 ```
-
-## Publish To GitHub Pages
-
-1. Create an empty repository on GitHub (for example `calc`).
-2. Initialize and push this project:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git push -u origin main
-```
-
-3. In GitHub, go to **Settings -> Pages** and set **Source** to **GitHub Actions**.
-4. Pushes to `main` will trigger [deploy-pages.yml](.github/workflows/deploy-pages.yml) and publish the app.
-
-Your live URL will be:
-
-`https://<your-username>.github.io/<your-repo>/`
