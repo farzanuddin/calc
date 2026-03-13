@@ -1,0 +1,78 @@
+# Calc
+
+A simple, keyboard-accessible calculator built with Vue 3 and TypeScript. Supports simple arithmetic operations, a light and dark theme and responsive mobile layout.
+
+## Objective
+
+This project was built as a hands-on exploration of two things: getting back up to speed with Vue after not having used it for a while, and evaluating the newly released Vite 8 — specifically how [Rolldown](https://rolldown.rs/) works as its bundler under the hood. Rolldown replaces the previous Rollup-based pipeline with a Rust-native bundler, and a small but real project felt like the right way to observe its build performance and output characteristics in practice.
+
+## Features
+
+- **Basic arithmetic** — addition, subtraction, multiplication, division, and percentage
+- **Chained operations** — apply multiple operators in sequence without pressing equals
+- **Sign toggle** — flip the sign of the current value with `±`
+- **Light/dark mode** — theme persisted to `localStorage`, with automatic detection of system preference on first load
+- **Keyboard support** — full keyboard input for digits, operators, Enter, Backspace, and Escape
+- **Haptic feedback** — optional vibration on button press on some mobile devices
+- **Error handling** — gracefully catches division by zero and malformed states
+- **Responsive layout** — fills the full screen on mobile with comfortable padding; fixed width on desktop
+
+## Tech Stack
+
+| Technology                                    | Version | Role                    |
+| --------------------------------------------- | ------- | ----------------------- |
+| [Vue 3](https://vuejs.org/)                   | ^3.5    | UI framework            |
+| [TypeScript](https://www.typescriptlang.org/) | ~5.9    | Type safety             |
+| [Vite](https://vite.dev/)                     | ^8.0    | Build tool & dev server |
+| [Tailwind CSS v4](https://tailwindcss.com/)   | ^4.2    | Utility-first styling   |
+
+## Why This Approach
+
+**Composables over a monolithic component** — Logic is extracted into focused composables (`useCalculator`, `useThemePreference`, etc.) rather than kept in a single large `App.vue`. Each composable owns one concern, making them independently readable and testable.
+
+**`computed` for derived state** — The active theme, rendered button classes, and main display string are `computed` properties. Vue caches these and only re-evaluates when reactive dependencies change, keeping rendering efficient without manual memoization.
+
+**Static button config** — The button layout lives in `src/config/calculator.ts` as a plain `const`. Since it never changes at runtime, keeping it outside reactivity avoids unnecessary tracking overhead.
+
+**Typed theme tokens** — Theme colours and class strings are defined once in `src/ui/calculatorTheme.ts` and typed via `calculator-ui.ts`. Components receive the current theme object and apply it directly, so colour is never repeated across the codebase.
+
+**Tailwind CSS v4** — Utility classes are applied inline in templates, keeping styles co-located with markup. The v4 Vite plugin (`@tailwindcss/vite`) integrates directly into the build pipeline, so no separate PostCSS setup is required.
+
+**Keyboard listeners on `window`** — Rather than requiring a specific element to be focused, key events are captured at the `window` level so the calculator responds immediately. The listener is removed in `onUnmounted` to prevent leaks.
+
+**Haptics via the Vibration API** — `useHaptics` wraps `navigator.vibrate` with a feature check, so it silently does nothing on unsupported browsers.
+
+## Getting Started
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Build for production:
+
+```bash
+pnpm build
+pnpm preview
+```
+
+## Publish To GitHub Pages
+
+1. Create an empty repository on GitHub (for example `calc`).
+2. Initialize and push this project:
+
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/<your-username>/<your-repo>.git
+git push -u origin main
+```
+
+3. In GitHub, go to **Settings -> Pages** and set **Source** to **GitHub Actions**.
+4. Pushes to `main` will trigger [deploy-pages.yml](.github/workflows/deploy-pages.yml) and publish the app.
+
+Your live URL will be:
+
+`https://<your-username>.github.io/<your-repo>/`

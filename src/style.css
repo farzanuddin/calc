@@ -1,0 +1,51 @@
+@import 'tailwindcss';
+
+:root {
+  --color-app-surface-light: #e7edf4;
+  --color-app-surface-dark: #1f2429;
+  --color-toggle-surface-light: #404648;
+  --color-toggle-surface-dark: #2f353c;
+  --color-toggle-border-light: #4f5558;
+  --color-toggle-border-dark: #606872;
+  --color-toggle-text-light: #e7ebee;
+  --color-toggle-text-dark: #f1f4f7;
+  --color-calculator-shell-light: #e2dccd;
+  --color-calculator-shell-dark: #2b3036;
+  --color-calculator-body-light: #e0d9c8;
+  --color-calculator-body-dark: #2f353c;
+  --color-display-frame-light: #e8e1d2;
+  --color-display-frame-dark: #343b43;
+  --color-display-screen: #9ab996;
+  --color-display-screen-border: #8a8e8a;
+  --color-display-screen-text: #2e4031;
+  --color-operation-text: #727b81;
+  --color-key-neutral-light: #f6f8fa;
+  --color-key-neutral-dark: #2b3138;
+  --color-key-function-light: #ffffff;
+  --color-key-function-dark: #2b3138;
+  --color-key-operator-light: #d9985e;
+  --color-key-operator-dark: #bcc4cd;
+  --color-key-neutral-text-light: #24282c;
+  --color-key-neutral-text-dark: #f0f3f6;
+  --color-key-function-text-light: #1f2326;
+  --color-key-function-text-dark: #f0f3f6;
+  --color-key-operator-text-light: #2f1d10;
+  --color-key-operator-text-dark: #1c2126;
+  --font-calc-key: 'Arial Narrow', 'Trebuchet MS', sans-serif;
+  --font-calc-display: 'Courier New', Courier, monospace;
+  --shadow-calculator-shell: 0 4px 8px rgba(0, 0, 0, 0.09);
+  --shadow-display-frame-light: inset 0 0 0 1px #c5bcaa;
+  --shadow-display-frame-dark: inset 0 0 0 1px #444c55;
+  --shadow-key-neutral-light:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 3px 7px rgba(0, 0, 0, 0.13);
+  --shadow-key-neutral-dark:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 3px 7px rgba(0, 0, 0, 0.24);
+  --shadow-key-function-light:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85), 0 3px 7px rgba(0, 0, 0, 0.12);
+  --shadow-key-function-dark:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 3px 7px rgba(0, 0, 0, 0.24);
+  --shadow-key-operator-light:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 3px 7px rgba(0, 0, 0, 0.22);
+  --shadow-key-operator-dark:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55), 0 3px 7px rgba(0, 0, 0, 0.2);
+}
