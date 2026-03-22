@@ -29,6 +29,10 @@ This project was built as a hands-on exploration of two things: getting back up 
 | [TypeScript](https://www.typescriptlang.org/) | ~5.9    | Type safety             |
 | [Vite](https://vite.dev/)                     | ^8.0    | Build tool & dev server |
 | [Tailwind CSS v4](https://tailwindcss.com/)   | ^4.2    | Utility-first styling   |
+| [pnpm](https://pnpm.io/)                      | ^10     | Package manager         |
+| [Vitest](https://vitest.dev/)                 | ^4.1    | Tests & coverage        |
+| [Prettier](https://prettier.io/)              | ^3.8    | Code formatting         |
+| [jsdom](https://github.com/jsdom/jsdom) | ^28 | DOM environment for tests |
 
 ## Why This Approach
 
@@ -59,3 +63,8 @@ Build for production:
 pnpm build
 pnpm preview
 ```
+
+## Testing
+
+- Tests and coverage are run with **Vitest**. Run the test suite with `pnpm run test` and generate a coverage report with `pnpm exec vitest --coverage` (the project uses Vitest's v8 coverage provider).
+
