@@ -1,5 +1,12 @@
 # Calc
 
+![Vue.js](https://img.shields.io/badge/vuejs-%2335495e.svg?style=for-the-badge&logo=vuedotjs&logoColor=%234FC08D)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
+![Vitest](https://img.shields.io/badge/-Vitest-252529?style=for-the-badge&logo=vitest&logoColor=FCC72B)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-%23192a32?style=for-the-badge&logo=prettier&logoColor=dc524a)
+
 A simple, keyboard-accessible calculator built with Vue 3 and TypeScript. Supports simple arithmetic operations, a light and dark theme and responsive mobile layout.
 
 https://farzanuddin.github.io/calc/
@@ -20,19 +27,6 @@ This project was built as a hands-on exploration of two things: getting back up 
 - **Haptic feedback** — optional vibration on button press on some mobile devices
 - **Error handling** — gracefully catches division by zero and malformed states
 - **Responsive layout** — fills the full screen on mobile with comfortable padding; fixed width on desktop
-
-## Tech Stack
-
-| Technology                                    | Version | Role                    |
-| --------------------------------------------- | ------- | ----------------------- |
-| [Vue 3](https://vuejs.org/)                   | ^3.5    | UI framework            |
-| [TypeScript](https://www.typescriptlang.org/) | ~5.9    | Type safety             |
-| [Vite](https://vite.dev/)                     | ^8.0    | Build tool & dev server |
-| [Tailwind CSS v4](https://tailwindcss.com/)   | ^4.2    | Utility-first styling   |
-| [pnpm](https://pnpm.io/)                      | ^10     | Package manager         |
-| [Vitest](https://vitest.dev/)                 | ^4.1    | Tests & coverage        |
-| [Prettier](https://prettier.io/)              | ^3.8    | Code formatting         |
-| [jsdom](https://github.com/jsdom/jsdom) | ^28 | DOM environment for tests |
 
 ## Why This Approach
 
