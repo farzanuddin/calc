@@ -41,6 +41,23 @@ export const useCalculator = () => {
     return true;
   };
 
+  const popTrailingOperator = (): boolean => {
+    const tokens = expressionTokens.value;
+    const trailingOperator = tokens[tokens.length - 1];
+    const trailingValue = tokens[tokens.length - 2];
+
+    if (
+      trailingOperator &&
+      isOperatorToken(trailingOperator) &&
+      typeof trailingValue === 'string'
+    ) {
+      expressionTokens.value = tokens.slice(0, -2);
+      display.value = trailingValue;
+      return true;
+    }
+    return false;
+  };
+
   const handleNumber = (num: string) => {
     if (shouldResetDisplay.value || isPercentDisplay(display.value)) {
       display.value = num;
@@ -189,18 +206,7 @@ export const useCalculator = () => {
     }
 
     if (shouldResetDisplay.value) {
-      const trailingOperator =
-        expressionTokens.value[expressionTokens.value.length - 1];
-      const trailingValue =
-        expressionTokens.value[expressionTokens.value.length - 2];
-
-      if (
-        trailingOperator &&
-        isOperatorToken(trailingOperator) &&
-        typeof trailingValue === 'string'
-      ) {
-        expressionTokens.value = expressionTokens.value.slice(0, -2);
-        display.value = trailingValue;
+      if (popTrailingOperator()) {
         shouldResetDisplay.value = false;
         return;
       }
@@ -214,18 +220,7 @@ export const useCalculator = () => {
     }
 
     if (display.value === '') {
-      const trailingOperator =
-        expressionTokens.value[expressionTokens.value.length - 1];
-      const trailingValue =
-        expressionTokens.value[expressionTokens.value.length - 2];
-
-      if (
-        trailingOperator &&
-        isOperatorToken(trailingOperator) &&
-        typeof trailingValue === 'string'
-      ) {
-        expressionTokens.value = expressionTokens.value.slice(0, -2);
-        display.value = trailingValue;
+      if (popTrailingOperator()) {
         return;
       }
 
@@ -307,22 +302,17 @@ export const useCalculator = () => {
     }
   };
 
-  const operationDisplay = computed(() => {
-    if (expressionTokens.value.length === 0) return '';
-
-    return expressionTokens.value
-      .map((token) =>
-        isOperatorToken(token) ? (operatorSymbols[token] ?? token) : token
-      )
-      .join('');
-  });
-
   const mainDisplay = computed(() => {
     if (expressionTokens.value.length === 0) {
       return display.value;
     }
 
-    const baseExpression = operationDisplay.value;
+    const baseExpression = expressionTokens.value
+      .map((token) =>
+        isOperatorToken(token) ? (operatorSymbols[token] ?? token) : token
+      )
+      .join('');
+
     if (shouldResetDisplay.value) {
       return baseExpression;
     }
@@ -339,10 +329,7 @@ export const useCalculator = () => {
   });
 
   return {
-    display,
-    operationDisplay,
     mainDisplay,
-    handleBackspace,
     handleClick,
   };
 };

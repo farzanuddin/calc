@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useHaptics } from '../composables/useHaptics';
+import { triggerTapHaptic } from '../composables/useHaptics';
 import type { DecoratedButton } from '../types/calculator-ui';
 
 const props = defineProps<{
@@ -9,8 +9,6 @@ const props = defineProps<{
 const emit = defineEmits<{
   press: [button: DecoratedButton];
 }>();
-
-const { triggerTapHaptic } = useHaptics();
 
 const handlePress = (button: DecoratedButton) => {
   triggerTapHaptic();

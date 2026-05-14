@@ -1,21 +1,19 @@
-import { computed, onMounted, ref } from 'vue';
-import { themeClasses } from '../ui/calculatorTheme';
-import type { ThemeName } from '../types/calculator-ui';
+import { onMounted, ref } from 'vue';
 
 const themeStorageKey = 'calc-theme';
+
+const applyTheme = (dark: boolean) => {
+  document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+};
 
 export const useThemePreference = () => {
   const isDarkMode = ref(false);
 
-  const themeName = computed<ThemeName>(() =>
-    isDarkMode.value ? 'dark' : 'light'
-  );
-
-  const currentTheme = computed(() => themeClasses[themeName.value]);
-
   const toggleDarkMode = () => {
     isDarkMode.value = !isDarkMode.value;
-    localStorage.setItem(themeStorageKey, isDarkMode.value ? 'dark' : 'light');
+    const theme = isDarkMode.value ? 'dark' : 'light';
+    localStorage.setItem(themeStorageKey, theme);
+    applyTheme(isDarkMode.value);
   };
 
   onMounted(() => {
@@ -23,22 +21,25 @@ export const useThemePreference = () => {
 
     if (savedTheme === 'dark') {
       isDarkMode.value = true;
+      applyTheme(true);
       return;
     }
 
     if (savedTheme === 'light') {
       isDarkMode.value = false;
+      applyTheme(false);
       return;
     }
 
-    isDarkMode.value = window.matchMedia(
+    const prefersDark = window.matchMedia(
       '(prefers-color-scheme: dark)'
     ).matches;
+    isDarkMode.value = prefersDark;
+    applyTheme(prefersDark);
   });
 
   return {
     isDarkMode,
-    currentTheme,
     toggleDarkMode,
   };
 };

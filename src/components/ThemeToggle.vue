@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { useHaptics } from '../composables/useHaptics';
+import { computed } from 'vue';
+import { triggerTapHaptic } from '../composables/useHaptics';
 import { darkModeToggleBaseClasses } from '../ui/calculatorTheme';
 
 const props = defineProps<{
   isDarkMode: boolean;
-  themeClasses: string;
 }>();
 
 const emit = defineEmits<{
   toggle: [];
 }>();
 
-const { triggerTapHaptic } = useHaptics();
+const iconSrc = computed(() => (props.isDarkMode ? '/sun.svg' : '/moon.svg'));
 
 const handleToggle = () => {
   triggerTapHaptic();
@@ -23,18 +23,13 @@ const handleToggle = () => {
   <button
     @click="handleToggle"
     :title="`Switch to ${props.isDarkMode ? 'Light' : 'Dark'} mode`"
-    :class="[darkModeToggleBaseClasses, props.themeClasses]"
+    :class="[
+      darkModeToggleBaseClasses,
+      'border-(--color-toggle-border) bg-(--color-toggle-bg) text-(--color-toggle-text) shadow-(--shadow-toggle)',
+    ]"
   >
     <img
-      v-if="props.isDarkMode"
-      src="/sun.svg"
-      alt=""
-      aria-hidden="true"
-      class="h-3.5 w-3.5 sm:h-3 sm:w-3"
-    />
-    <img
-      v-else
-      src="/moon.svg"
+      :src="iconSrc"
       alt=""
       aria-hidden="true"
       class="h-3.5 w-3.5 sm:h-3 sm:w-3"
