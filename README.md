@@ -14,7 +14,6 @@ This project was built as a hands-on exploration of two things: getting back up 
 
 - **Basic arithmetic** — addition, subtraction, multiplication, division, and percentage
 - **Chained operations** — apply multiple operators in sequence without pressing equals
-- **Sign toggle** — flip the sign of the current value with `±`
 - **Light/dark mode** — theme persisted to `localStorage`, with automatic detection of system preference on first load
 - **Keyboard support** — full keyboard input for digits, operators, Enter, Backspace, and Escape
 - **Haptic feedback** — optional vibration on button press on supported mobile devices
